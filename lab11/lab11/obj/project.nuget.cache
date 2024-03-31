@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "cpX1kmlYvMG5DmQBIIabH7UR+OGkXgzmD4KBqcFI9FrNwlJTm+2DH9Y+QkWTHSv/DSimpD0lrrROuJsvlkvA6w==",
+  "dgSpecHash": "M0wAfaLBE4sfwLLDApnEBMQCPF8Nn5XwHc0Y2USqbUG++WdoeB7C2yBUtzvLUU42ac3hPEGZLRgtZpGfrJJgdw==",
   "success": true,
   "projectFilePath": "D:\\GIT\\lab11\\lab11\\lab11\\lab11.csproj",
   "expectedPackageFiles": [
@@ -69,7 +69,30 @@
     "C:\\Users\\tsymb\\.nuget\\packages\\system.text.encodings.web\\7.0.0\\system.text.encodings.web.7.0.0.nupkg.sha512",
     "C:\\Users\\tsymb\\.nuget\\packages\\system.text.json\\7.0.0\\system.text.json.7.0.0.nupkg.sha512",
     "C:\\Users\\tsymb\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
-    "C:\\Users\\tsymb\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512"
+    "C:\\Users\\tsymb\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
+    "C:\\Users\\tsymb\\.nuget\\packages\\toastnotifications\\2.5.1\\toastnotifications.2.5.1.nupkg.sha512",
+    "C:\\Users\\tsymb\\.nuget\\packages\\toastnotifications.messages\\2.5.1\\toastnotifications.messages.2.5.1.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Пакет \"ToastNotifications 2.5.1\" был восстановлен с помощью \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\", а не целевой платформы проекта \"net7.0-windows7.0\". Этот пакет может быть не полностью совместим с вашим проектом.",
+      "libraryId": "ToastNotifications",
+      "targetGraphs": [
+        "net7.0-windows7.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Пакет \"ToastNotifications.Messages 2.5.1\" был восстановлен с помощью \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\", а не целевой платформы проекта \"net7.0-windows7.0\". Этот пакет может быть не полностью совместим с вашим проектом.",
+      "libraryId": "ToastNotifications.Messages",
+      "targetGraphs": [
+        "net7.0-windows7.0"
+      ]
+    }
+  ]
 }

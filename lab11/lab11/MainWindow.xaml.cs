@@ -2,11 +2,17 @@
 using lab11.CRUD.OrdersCRUD;
 using lab11.CRUD.ProductsCRUD;
 using lab11.CRUD.StatusesCRUD;
+using lab11.CRUD.UsersCRUD;
 using lab11.DataBase;
 using lab11.Entityes;
+using lab11.WindowsCRUD;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -20,6 +26,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ToastNotifications;
+using ToastNotifications.Position;
+using ToastNotifications.Lifetime;
+using ToastNotifications.Messages;
 
 namespace lab11
 {
@@ -28,10 +38,32 @@ namespace lab11
     /// </summary>
     public partial class MainWindow : Window
     {
+        Notifier notifier = new Notifier(cfg =>
+        {
+            cfg.PositionProvider = new WindowPositionProvider(
+                parentWindow: Application.Current.MainWindow,
+                corner: Corner.TopRight,
+                offsetX: 10,
+                offsetY: 10);
+
+            cfg.LifetimeSupervisor = new TimeAndCountBasedLifetimeSupervisor(
+                notificationLifetime: TimeSpan.FromSeconds(5),
+                maximumNotificationCount: MaximumNotificationCount.FromCount(5));
+
+            cfg.Dispatcher = Application.Current.Dispatcher;
+        });
+
+
         private readonly ProductRepository _productRepo;
         private readonly OrderRepository _orderRepo;
         private readonly CategoryRepository _categoryRepo;
         private readonly StatusRepository _statusRepo;
+        private readonly UserRepository _userRepo;
+
+        private string TableName = "";
+        private int ID = 0;
+
+
         public MainWindow()
         {
             InitializeComponent();
@@ -39,23 +71,130 @@ namespace lab11
             _productRepo = new ProductRepository(new AppDBContext());
             _categoryRepo = new CategoryRepository(new AppDBContext());
             _statusRepo = new StatusRepository(new AppDBContext());
+            _userRepo = new UserRepository(new AppDBContext());
         }
 
-        private async void Button_Click(object sender, RoutedEventArgs e)
+        public void SetItemsSource<T>(List<T> dataSource)
+        {
+            myDataGrid.ItemsSource = dataSource;
+            myDataGrid.Items.Refresh();
+        }
+
+        private async void UpdateDataAsync()
+        {
+            if (TableName == "Products")
+            {
+                SetItemsSource(await _productRepo.GetAllProducts());
+            }
+            else if (TableName == "Orders")
+            {
+                SetItemsSource(await _orderRepo.GetAllOrders());
+            }
+            else if (TableName == "Category")
+            {
+                SetItemsSource(await _categoryRepo.GetAllCategories());
+            }
+            else if (TableName == "Status")
+            {
+                SetItemsSource(await _statusRepo.GetAllStatuses());
+            }
+            else if (TableName == "Users")
+            {
+                SetItemsSource(await _userRepo.GetAllUsers());
+            }
+        }
+
+        private async void table_cb_SelectionChanged(object sender, RoutedEventArgs e)
         {
             try
             {
-                var productsData = await _statusRepo.GetAllStatuses();
+                ID = 0;
+                string table = table_cb.Text;
 
-                DataGrid.ItemsSource = productsData;
-                DataGrid.Items.Refresh();
+                ComboBox? comboBox = sender as ComboBox;
+                if (comboBox == null)
+                {
+                    return;
+                }
+                ComboBoxItem? selectedItem = comboBox.SelectedItem as ComboBoxItem;
+                if (selectedItem == null)
+                    return;
 
+                TableName = selectedItem.Content.ToString();
+                UpdateDataAsync();
             }
-            catch
+            catch (Exception ex)
             {
-                
+                notifier.ShowError(ex.Message);
             }
         }
 
+        private async void edit_btn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (TableName != "")
+                {
+                    Window? window = null;
+                    if (TableName == "Products")
+                    {
+                        window = new CategoryCRUD((byte)ID);
+                    }
+                    else if (TableName == "Orders")
+                    {
+                        window = new CategoryCRUD((byte)ID);
+                    }
+                    else if (TableName == "Category")
+                    {
+                        window = new CategoryCRUD((byte)ID);
+                    }
+                    else if (TableName == "Status")
+                    {
+                        window = new CategoryCRUD((byte)ID);
+                    }
+                    else if (TableName == "Users")
+                    {
+                        window = new CategoryCRUD((byte)ID);
+                    }
+
+                    window.ShowDialog();
+                    UpdateDataAsync();
+
+                    notifier.ShowSuccess("Data updated!");
+                }
+            }
+            catch (Exception ex)
+            {
+                notifier.ShowError(ex.Message);
+            }
+        }
+
+        private void NewRecord_btn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                notifier.ShowError(ex.Message);
+            }
+        }
+
+        private void myDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (myDataGrid.SelectedItem != null)
+            {
+                if (TableName != "")
+                {
+                    if (TableName == "Category")
+                    {
+                        CategoryViewModel selectedRow = (CategoryViewModel)myDataGrid.SelectedItem;
+
+                        ID = selectedRow.CategoryId;
+                    }
+                }
+            }
+        }
     }
 }

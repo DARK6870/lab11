@@ -75,3 +75,7 @@ D:\GIT\lab11\lab11\lab11\obj\Debug\net7.0-windows\refint\lab11.dll
 D:\GIT\lab11\lab11\lab11\obj\Debug\net7.0-windows\lab11.pdb
 D:\GIT\lab11\lab11\lab11\obj\Debug\net7.0-windows\lab11.genruntimeconfig.cache
 D:\GIT\lab11\lab11\lab11\obj\Debug\net7.0-windows\ref\lab11.dll
+D:\GIT\lab11\lab11\lab11\obj\Debug\net7.0-windows\WindowsCRUD\CategoryCRUD.g.cs
+D:\GIT\lab11\lab11\lab11\obj\Debug\net7.0-windows\WindowsCRUD\CategoryCRUD.baml
+D:\GIT\lab11\lab11\lab11\bin\Debug\net7.0-windows\ToastNotifications.dll
+D:\GIT\lab11\lab11\lab11\bin\Debug\net7.0-windows\ToastNotifications.Messages.dll

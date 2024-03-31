@@ -15,8 +15,21 @@
      FontFamily="{DynamicResource MaterialDesignFont}"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <DataGrid x:Name="DataGrid" Margin="0,75,0,0"/>
-        <Button Click="Button_Click" Content="Change" HorizontalAlignment="Left" Margin="122,27,0,0" VerticalAlignment="Top"/>
+
+        <DataGrid IsReadOnly="True" SelectionMode="Extended" SelectionChanged="myDataGrid_SelectionChanged" x:Name="myDataGrid" Margin="0,75,0,0"/>
+        <ComboBox x:Name="table_cb" materialDesign:HintAssist.Hint="Select table" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="table_cb_SelectionChanged" FontSize="16">
+            <ComboBoxItem Content="Products"/>
+            <ComboBoxItem Content="Orders"/>
+            <ComboBoxItem Content="Status"/>
+            <ComboBoxItem Content="Category"/>
+            <ComboBoxItem Content="Users"/>
+        </ComboBox>
+        <Button x:Name="edit_btn" Click="edit_btn_Click" HorizontalAlignment="Left" Margin="724,27,0,0" VerticalAlignment="Top" Background="#FFC78F3D" BorderBrush="#FFD4964A">
+            <materialDesign:PackIcon Kind="Edit" />
+        </Button>
+        <Button x:Name="NewRecord_btn" Click="NewRecord_btn_Click" HorizontalAlignment="Left" Margin="658,27,0,0" VerticalAlignment="Top" Background="#FF056DA4" BorderBrush="#FF035990">
+            <materialDesign:PackIcon Kind="Plus" />
+        </Button>
 
     </Grid>
 </Window>

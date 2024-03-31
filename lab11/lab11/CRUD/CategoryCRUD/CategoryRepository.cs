@@ -17,6 +17,22 @@ namespace lab11.CRUD.CategoryCRUD
         {
             _context = context;
         }
+
+        public async Task<bool> AddNewCategory(Category model)
+        {
+            await _context.Categories.AddAsync(model);
+            int res = await _context.SaveChangesAsync();
+            return res > 0;
+        }
+
+        public async Task<bool> DeleteCategoryById(byte id)
+        {
+            var model = await _context.Categories.FindAsync(id);
+            _context.Categories.Remove(model);
+            int res = await _context.SaveChangesAsync();
+            return res > 0;
+        }
+
         public async Task<List<CategoryViewModel>> GetAllCategories()
         {
             var categories = await _context.Categories.ToListAsync();
@@ -29,5 +45,19 @@ namespace lab11.CRUD.CategoryCRUD
 
             return categoryViewModels;
         }
+
+        public async Task<Category> GetCategoryById(byte id)
+        {
+            var res = await _context.Categories.FindAsync(id);
+            return res;
+        }
+
+        public async Task<bool> UpdateCategory(Category model)
+        {
+            _context.Categories.Update(model);
+            int res = await _context.SaveChangesAsync();
+            return res > 0;
+        }
+
     }
 }

@@ -72,6 +72,14 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[7.0.17, )"
+            },
+            "ToastNotifications": {
+              "target": "Package",
+              "version": "[2.5.1, )"
+            },
+            "ToastNotifications.Messages": {
+              "target": "Package",
+              "version": "[2.5.1, )"
             }
           },
           "imports": [

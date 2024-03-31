@@ -1197,6 +1197,27 @@
             "rid": "win"
           }
         }
+      },
+      "ToastNotifications/2.5.1": {
+        "type": "package",
+        "compile": {
+          "lib/net40/ToastNotifications.dll": {}
+        },
+        "runtime": {
+          "lib/net40/ToastNotifications.dll": {}
+        }
+      },
+      "ToastNotifications.Messages/2.5.1": {
+        "type": "package",
+        "dependencies": {
+          "ToastNotifications": "2.5.1"
+        },
+        "compile": {
+          "lib/net40/ToastNotifications.Messages.dll": {}
+        },
+        "runtime": {
+          "lib/net40/ToastNotifications.Messages.dll": {}
+        }
       }
     }
   },
@@ -3230,6 +3251,31 @@
         "system.windows.extensions.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "ToastNotifications/2.5.1": {
+      "sha512": "0ZBWG0FCPafwbIzNhjWgC0GEOyk51GF3rYWrh5QJ61ZxDEoLgdDsEUt8HMxYN7lRLVt/mWhtgdbe4OmhXfwtkA==",
+      "type": "package",
+      "path": "toastnotifications/2.5.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/ToastNotifications.dll",
+        "readme.txt",
+        "toastnotifications.2.5.1.nupkg.sha512",
+        "toastnotifications.nuspec"
+      ]
+    },
+    "ToastNotifications.Messages/2.5.1": {
+      "sha512": "KG4oMi61ShmRuPK3/yAFhUph/rZGYmS8IcsIvF2Fk3np11fQo6ZjdK2XUmFnY9b0oQY9IilxhCmOdVGoOGEeHQ==",
+      "type": "package",
+      "path": "toastnotifications.messages/2.5.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/ToastNotifications.Messages.dll",
+        "toastnotifications.messages.2.5.1.nupkg.sha512",
+        "toastnotifications.messages.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
@@ -3239,7 +3285,9 @@
       "Microsoft.EntityFrameworkCore >= 7.0.17",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.17",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.17",
-      "Microsoft.EntityFrameworkCore.Tools >= 7.0.17"
+      "Microsoft.EntityFrameworkCore.Tools >= 7.0.17",
+      "ToastNotifications >= 2.5.1",
+      "ToastNotifications.Messages >= 2.5.1"
     ]
   },
   "packageFolders": {
@@ -3314,6 +3362,14 @@
             "suppressParent": "All",
             "target": "Package",
             "version": "[7.0.17, )"
+          },
+          "ToastNotifications": {
+            "target": "Package",
+            "version": "[2.5.1, )"
+          },
+          "ToastNotifications.Messages": {
+            "target": "Package",
+            "version": "[2.5.1, )"
           }
         },
         "imports": [
@@ -3338,5 +3394,27 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Пакет \"ToastNotifications 2.5.1\" был восстановлен с помощью \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\", а не целевой платформы проекта \"net7.0-windows7.0\". Этот пакет может быть не полностью совместим с вашим проектом.",
+      "libraryId": "ToastNotifications",
+      "targetGraphs": [
+        "net7.0-windows7.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Пакет \"ToastNotifications.Messages 2.5.1\" был восстановлен с помощью \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\", а не целевой платформы проекта \"net7.0-windows7.0\". Этот пакет может быть не полностью совместим с вашим проектом.",
+      "libraryId": "ToastNotifications.Messages",
+      "targetGraphs": [
+        "net7.0-windows7.0"
+      ]
+    }
+  ]
 }

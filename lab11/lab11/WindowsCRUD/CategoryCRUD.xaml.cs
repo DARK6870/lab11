@@ -38,11 +38,6 @@ namespace lab11.WindowsCRUD
             cfg.Dispatcher = Application.Current.Dispatcher;
         });
 
-        public CategoryCRUD(Notifier notifier)
-        {
-            this.notifier = notifier;
-        }
-
         private Category model;
         private readonly CategoryRepository _categoryRepo;
         public CategoryCRUD(byte ID)
@@ -108,14 +103,18 @@ namespace lab11.WindowsCRUD
         {
             try
             {
-                bool result = await _categoryRepo.DeleteCategoryById(model.CategoryId);
-                if (result)
+                MessageBoxResult res = MessageBox.Show("Are you sure want to delete this record?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (res == MessageBoxResult.Yes)
                 {
-                    this.Close();
-                }
-                else
-                {
-                    notifier.ShowError("Womething went wrong!");
+                    bool result = await _categoryRepo.DeleteCategoryById(model.CategoryId);
+                    if (result)
+                    {
+                        this.Close();
+                    }
+                    else
+                    {
+                        notifier.ShowError("Womething went wrong!");
+                    }
                 }
             }
             catch (Exception ex)

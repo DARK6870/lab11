@@ -14,5 +14,7 @@ namespace lab11.CRUD.CategoryCRUD
         Task<bool> DeleteCategoryById(byte id);
         Task<bool> AddNewCategory(Category model);
         Task<bool> UpdateCategory(Category model);
+        Task<List<string>> GetAllCategoryNames();
+        Task<byte> GetCategoryIdByCategoryName(string name);
     }
 }

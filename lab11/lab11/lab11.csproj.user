@@ -10,12 +10,30 @@
     <Compile Update="WindowsCRUD\CategoryCRUD.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="WindowsCRUD\OrdersCRUD.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="WindowsCRUD\ProductsCRUD.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="WindowsCRUD\StatusCRUD.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="WindowsCRUD\CategoryCRUD.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="WindowsCRUD\OrdersCRUD.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="WindowsCRUD\ProductsCRUD.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="WindowsCRUD\StatusCRUD.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

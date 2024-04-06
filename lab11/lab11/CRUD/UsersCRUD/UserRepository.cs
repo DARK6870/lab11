@@ -17,6 +17,13 @@ namespace lab11.CRUD.UsersCRUD
             _context = context; 
         }
 
+        public async Task<bool> AddNewUser(User user)
+        {
+            await _context.Users.AddAsync(user);
+            int res = await _context.SaveChangesAsync();
+            return res > 0;
+        }
+
         public async Task<List<UserViewModel>> GetAllUsers()
         {
             var users = await _context.Users.ToListAsync();

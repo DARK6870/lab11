@@ -46,9 +46,23 @@ namespace lab11.CRUD.CategoryCRUD
             return categoryViewModels;
         }
 
+        public async Task<List<string>> GetAllCategoryNames()
+        {
+            var categoies = await _context.Categories.ToListAsync();
+            List<string> res = categoies.Select(p => p.CategoryName).ToList();
+            return res;
+        }
+
         public async Task<Category> GetCategoryById(byte id)
         {
             var res = await _context.Categories.FindAsync(id);
+            return res;
+        }
+
+        public async Task<byte> GetCategoryIdByCategoryName(string name)
+        {
+            Category model = await _context.Categories.FirstOrDefaultAsync(p => p.CategoryName == name);
+            byte res = model.CategoryId;
             return res;
         }
 

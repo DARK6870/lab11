@@ -10,5 +10,6 @@ namespace lab11.CRUD.UsersCRUD
     public interface IUserRepository
     {
         Task<List<UserViewModel>> GetAllUsers();
+        Task<bool> AddNewUser(User user);
     }
 }

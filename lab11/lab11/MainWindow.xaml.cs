@@ -138,11 +138,11 @@ namespace lab11
                     Window? window = null;
                     if (TableName == "Products")
                     {
-                        window = new CategoryCRUD((byte)ID);
+                        window = new ProductsCRUD(ID);
                     }
                     else if (TableName == "Orders")
                     {
-                        window = new CategoryCRUD((byte)ID);
+                        window = new OrdersCRUD(ID);
                     }
                     else if (TableName == "Category")
                     {
@@ -150,7 +150,7 @@ namespace lab11
                     }
                     else if (TableName == "Status")
                     {
-                        window = new CategoryCRUD((byte)ID);
+                        window = new StatusCRUD((byte)ID);
                     }
                     else if (TableName == "Users")
                     {
@@ -173,7 +173,33 @@ namespace lab11
         {
             try
             {
+                if (TableName != "")
+                {
+                    Window? window = null;
+                    if (TableName == "Products")
+                    {
+                        window = new CategoryCRUD(0);
+                    }
+                    else if (TableName == "Orders")
+                    {
+                        window = new OrdersCRUD(0);
+                    }
+                    else if (TableName == "Category")
+                    {
+                        window = new CategoryCRUD(0);
+                    }
+                    else if (TableName == "Status")
+                    {
+                        window = new StatusCRUD(0);
+                    }
+                    else if (TableName == "Users")
+                    {
+                        window = new CategoryCRUD(0);
+                    }
 
+                    window.ShowDialog();
+                    UpdateDataAsync();
+                }
             }
             catch (Exception ex)
             {
@@ -192,6 +218,24 @@ namespace lab11
                         CategoryViewModel selectedRow = (CategoryViewModel)myDataGrid.SelectedItem;
 
                         ID = selectedRow.CategoryId;
+                    }
+                    else if (TableName == "Status")
+                    {
+                        StatusViewModel selectedRow = (StatusViewModel)myDataGrid.SelectedItem;
+
+                        ID = selectedRow.StatusId;
+                    }
+                    else if (TableName == "Products")
+                    {
+                        ProductViewModel selectedRow = (ProductViewModel)myDataGrid.SelectedItem;
+
+                        ID = selectedRow.ProductId;
+                    }
+                    else if (TableName == "Orders")
+                    {
+                        OrderViewModel selectedRow = (OrderViewModel)myDataGrid.SelectedItem;
+
+                        ID = selectedRow.OrderId;
                     }
                 }
             }

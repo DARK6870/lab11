@@ -1,0 +1,26 @@
+﻿<Window x:Class="lab11.WindowsCRUD.OrdersCRUD"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:lab11.WindowsCRUD"
+                                mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+TextElement.FontWeight="Regular"
+TextElement.FontSize="16"
+TextOptions.TextFormattingMode="Ideal"
+TextOptions.TextRenderingMode="Auto"
+Background="{DynamicResource MaterialDesignPaper}"
+FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="OrdersCRUD" Height="450" Width="400" ResizeMode="CanMinimize">
+    <Grid>
+        <Label Content="Edit Order" HorizontalAlignment="Center" Margin="0,40,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <ComboBox x:Name="Status_tb" materialDesign:HintAssist.Hint="Order status" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Center" Margin="0,140,0,0" VerticalAlignment="Top" Width="250"/>
+        <Button x:Name="Save_changes_btn" Click="Save_changes_btn_Click" Content="Save changes" HorizontalAlignment="Left" Margin="75,329,0,0" VerticalAlignment="Top" Width="182"/>
+        <Button x:Name="Delete_btn" Click="Delete_btn_Click" HorizontalAlignment="Left" Margin="277,329,0,0" VerticalAlignment="Top" BorderBrush="#FFB7453A" Background="#FFC74949">
+            <materialDesign:PackIcon Kind="Delete"/>
+        </Button>
+
+    </Grid>
+</Window>

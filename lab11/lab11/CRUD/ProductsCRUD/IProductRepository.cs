@@ -10,5 +10,9 @@ namespace lab11.CRUD.ProductsCRUD
     public interface IProductRepository
     {
         Task<List<ProductViewModel>> GetAllProducts();
+        Task<bool> AddNewProduct(Product model);
+        Task<bool> DeleteProductById(int id);
+        Task<bool> UpdateProduct(Product model);
+        Task<Product> GetProductById(int id);
     }
 }

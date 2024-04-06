@@ -17,6 +17,22 @@ namespace lab11.CRUD.ProductsCRUD
         {
             _context = context;
         }
+
+        public async Task<bool> AddNewProduct(Product model)
+        {
+            _context.Products.Add(model);
+            int res = await _context.SaveChangesAsync();
+            return res > 0;
+        }
+
+        public async Task<bool> DeleteProductById(int id)
+        {
+            Product model = await GetProductById(id);
+            _context.Products.Remove(model);
+            int res = await _context.SaveChangesAsync();
+            return res > 0;
+        }
+
         public async Task<List<ProductViewModel>> GetAllProducts()
         {
             var products = await _context.Products
@@ -42,5 +58,17 @@ namespace lab11.CRUD.ProductsCRUD
             return result;
         }
 
+        public async Task<Product> GetProductById(int id)
+        {
+            Product model = await _context.Products.FindAsync(id);
+            return model;
+        }
+
+        public async Task<bool> UpdateProduct(Product model)
+        {
+            _context.Products.Update(model);
+            int res = await _context.SaveChangesAsync();
+            return res > 0;
+        }
     }
 }

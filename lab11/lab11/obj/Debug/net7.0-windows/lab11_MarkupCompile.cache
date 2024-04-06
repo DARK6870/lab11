@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
 D:\GIT\lab11\lab11\lab11\App.xaml
-2834287812
+5-960860784
 
-29479242482
+32-2077675765
 243173744311
-MainWindow.xaml;WindowsCRUD\CategoryCRUD.xaml;
+MainWindow.xaml;WindowsCRUD\CategoryCRUD.xaml;WindowsCRUD\OrdersCRUD.xaml;WindowsCRUD\ProductsCRUD.xaml;WindowsCRUD\StatusCRUD.xaml;
 
 False
 

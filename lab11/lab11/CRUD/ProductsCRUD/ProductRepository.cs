@@ -66,9 +66,16 @@ namespace lab11.CRUD.ProductsCRUD
 
         public async Task<bool> UpdateProduct(Product model)
         {
+            var existingProduct = await _context.Products.FindAsync(model.ProductId);
+            if (existingProduct != null)
+            {
+                _context.Entry(existingProduct).State = EntityState.Detached;//открепляем от контекста БД
+            }
+
             _context.Products.Update(model);
             int res = await _context.SaveChangesAsync();
             return res > 0;
         }
+
     }
 }

@@ -133,7 +133,7 @@ namespace lab11
         {
             try
             {
-                if (TableName != "")
+                if (TableName != "" && ID != 0)
                 {
                     Window? window = null;
                     if (TableName == "Products")
@@ -151,10 +151,6 @@ namespace lab11
                     else if (TableName == "Status")
                     {
                         window = new StatusCRUD((byte)ID);
-                    }
-                    else if (TableName == "Users")
-                    {
-                        window = new CategoryCRUD((byte)ID);
                     }
 
                     window.ShowDialog();
@@ -175,14 +171,14 @@ namespace lab11
             {
                 if (TableName != "")
                 {
+                    if (TableName == "Orders" || TableName == "Users")
+                    {
+                        throw new Exception("You cannot add new revord to this table!");
+                    }
                     Window? window = null;
                     if (TableName == "Products")
                     {
-                        window = new CategoryCRUD(0);
-                    }
-                    else if (TableName == "Orders")
-                    {
-                        window = new OrdersCRUD(0);
+                        window = new ProductsCRUD(0);
                     }
                     else if (TableName == "Category")
                     {
@@ -191,10 +187,6 @@ namespace lab11
                     else if (TableName == "Status")
                     {
                         window = new StatusCRUD(0);
-                    }
-                    else if (TableName == "Users")
-                    {
-                        window = new CategoryCRUD(0);
                     }
 
                     window.ShowDialog();

@@ -69,9 +69,9 @@ namespace lab11.WindowsCRUD
                 else
                 {
                     product = await _productRepo.GetProductById(ID);
-                    ProductName_tb.Text = product.Name;
+                    ProductName_tb.Text = product.ProductName;
                     Price_tb.Text = product.Price.ToString();
-                    Description_tb.Text = product.Description;
+                    Description_tb.Text = product.ProductDescription;
                     ImageURL_tb.Text = product.ImageUrl;
                     available_cb.IsChecked = product.Available;
                     Category cat = await _categoryRepo.GetCategoryById(product.CategoryId);
@@ -114,11 +114,11 @@ namespace lab11.WindowsCRUD
             Product model = new Product
             {
                 ProductId = Id,
-                Name = ProductName_tb.Text,
+                ProductName = ProductName_tb.Text,
                 Price = int.Parse(Price_tb.Text),
-                Description = Description_tb.Text,
+                ProductDescription = Description_tb.Text,
                 ImageUrl = ImageURL_tb.Text,
-                CategoryId = await _categoryRepo.GetCategoryIdByCategoryName(Category_cb.Text),
+                CategoryId = await _categoryRepo.GetCategoryIdByCategoryNameProcedure(Category_cb.Text),
                 Available = available_cb.IsChecked == true
             };
 

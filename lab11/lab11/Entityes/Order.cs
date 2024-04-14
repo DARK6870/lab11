@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace lab11.Entityes
 {
-    [Table("Order")]
+    [Table("Orders")]
     public class Order
     {
         [Key]

@@ -16,5 +16,6 @@ namespace lab11.CRUD.CategoryCRUD
         Task<bool> UpdateCategory(Category model);
         Task<List<string>> GetAllCategoryNames();
         Task<byte> GetCategoryIdByCategoryName(string name);
+        Task<byte> GetCategoryIdByCategoryNameProcedure(string name);
     }
 }

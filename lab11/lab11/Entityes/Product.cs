@@ -16,11 +16,11 @@ namespace lab11.Entityes
 
 
         [Required, MaxLength(50), Column(TypeName = "nvarchar(50)")]
-        public string? Name { get; set; }
+        public string? ProductName { get; set; }
 
 
         [Required, MaxLength(500), Column(TypeName = "nvarchar(500)")]
-        public string? Description { get; set; }
+        public string? ProductDescription { get; set; }
 
 
         [Required]

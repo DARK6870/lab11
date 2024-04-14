@@ -13,23 +13,24 @@
      TextOptions.TextRenderingMode="Auto"
      Background="{DynamicResource MaterialDesignPaper}"
      FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="700" Width="1200">
     <Grid>
 
-        <DataGrid IsReadOnly="True" SelectionMode="Extended" SelectionChanged="myDataGrid_SelectionChanged" x:Name="myDataGrid" Margin="0,75,0,0"/>
-        <ComboBox x:Name="table_cb" materialDesign:HintAssist.Hint="Select table" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="table_cb_SelectionChanged" FontSize="16">
+        <DataGrid IsReadOnly="True" SelectionMode="Extended" FontSize="16" SelectionChanged="myDataGrid_SelectionChanged" x:Name="myDataGrid" Margin="0,110,0,0"/>
+        <ComboBox x:Name="table_cb" materialDesign:HintAssist.Hint="Select table" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Margin="21,16,0,0" VerticalAlignment="Top" Width="177" SelectionChanged="table_cb_SelectionChanged" FontSize="16">
             <ComboBoxItem Content="Products"/>
             <ComboBoxItem Content="Orders"/>
             <ComboBoxItem Content="Status"/>
             <ComboBoxItem Content="Category"/>
             <ComboBoxItem Content="Users"/>
         </ComboBox>
-        <Button x:Name="edit_btn" Click="edit_btn_Click" HorizontalAlignment="Left" Margin="724,27,0,0" VerticalAlignment="Top" Background="#FFC78F3D" BorderBrush="#FFD4964A">
+        <Button x:Name="edit_btn" Click="edit_btn_Click" HorizontalAlignment="Right" Margin="0,70,30,0" VerticalAlignment="Top" Background="#FFC78F3D" BorderBrush="#FFD4964A">
             <materialDesign:PackIcon Kind="Edit" />
         </Button>
-        <Button x:Name="NewRecord_btn" Click="NewRecord_btn_Click" HorizontalAlignment="Left" Margin="658,27,0,0" VerticalAlignment="Top" Background="#FF056DA4" BorderBrush="#FF035990">
+        <Button x:Name="NewRecord_btn" Click="NewRecord_btn_Click" HorizontalAlignment="Right" Margin="0,70,90,0" VerticalAlignment="Top" Background="#FF056DA4" BorderBrush="#FF035990">
             <materialDesign:PackIcon Kind="Plus" />
         </Button>
+        <TextBox x:Name="search_tb" TextChanged="search_tb_TextChanged" materialDesign:HintAssist.Hint="Search" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Right" Margin="0,15,30,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="221" FontSize="16"/>
 
     </Grid>
 </Window>

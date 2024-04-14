@@ -33,9 +33,7 @@ using ToastNotifications.Messages;
 
 namespace lab11
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+
     public partial class MainWindow : Window
     {
         Notifier notifier = new Notifier(cfg =>
@@ -62,6 +60,7 @@ namespace lab11
 
         private string TableName = "";
         private int ID = 0;
+        dynamic data;
 
 
         public MainWindow()
@@ -78,29 +77,37 @@ namespace lab11
         {
             myDataGrid.ItemsSource = dataSource;
             myDataGrid.Items.Refresh();
+            data = dataSource;
         }
 
         private async void UpdateDataAsync()
         {
-            if (TableName == "Products")
+            try
             {
-                SetItemsSource(await _productRepo.GetAllProducts());
+                if (TableName == "Products")
+                {
+                    SetItemsSource(await _productRepo.GetAllProducts());
+                }
+                else if (TableName == "Orders")
+                {
+                    SetItemsSource(await _orderRepo.GetAllOrders());
+                }
+                else if (TableName == "Category")
+                {
+                    SetItemsSource(await _categoryRepo.GetAllCategories());
+                }
+                else if (TableName == "Status")
+                {
+                    SetItemsSource(await _statusRepo.GetAllStatuses());
+                }
+                else if (TableName == "Users")
+                {
+                    SetItemsSource(await _userRepo.GetAllUsers());
+                }
             }
-            else if (TableName == "Orders")
+            catch
             {
-                SetItemsSource(await _orderRepo.GetAllOrders());
-            }
-            else if (TableName == "Category")
-            {
-                SetItemsSource(await _categoryRepo.GetAllCategories());
-            }
-            else if (TableName == "Status")
-            {
-                SetItemsSource(await _statusRepo.GetAllStatuses());
-            }
-            else if (TableName == "Users")
-            {
-                SetItemsSource(await _userRepo.GetAllUsers());
+                notifier.ShowError("Oops, something went wrong!");
             }
         }
 
@@ -232,5 +239,47 @@ namespace lab11
                 }
             }
         }
+
+        private List<T> GetDataFromDataGrid<T>(DataGrid dataGrid)
+        {
+            if (dataGrid == null || dataGrid.Items.Count == 0)
+            {
+                return new List<T>();
+            }
+            List<T> dataList = dataGrid.Items.Cast<T>().ToList();
+
+            return dataList;
+        }
+
+
+        private void search_tb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                string searchText = search_tb.Text;
+                var modelList = (IEnumerable<dynamic>)data;
+                var foundModels = new List<dynamic>();
+                foreach (dynamic model in modelList)
+                {
+                    foreach (var property in model.GetType().GetProperties())
+                    {
+                        var value = property.GetValue(model);
+                        if (value != null && value.ToString().Contains(searchText))
+                        {
+                            foundModels.Add(model);
+                            break;
+                        }
+                    }
+                }
+
+                SetItemsSource(foundModels);
+                data = modelList;
+            }
+            catch (Exception ex)
+            {
+                notifier.ShowError("Извините, разрабы дануы накосячили в коде :)");
+            }
+        }
+
     }
 }

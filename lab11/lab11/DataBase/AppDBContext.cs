@@ -24,7 +24,7 @@ namespace lab11.DataBase
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("server=localhost; database=Practica_database_final_f_tochno_final; Integrated Security=true; Encrypt=false;");
+            optionsBuilder.UseSqlServer("server=localhost; database=MyStore; Integrated Security=true; Encrypt=false;");
             base.OnConfiguring(optionsBuilder);
         }
         //"Data Source=SQL8005.site4now.net;Initial Catalog=db_aa52ba_logins;User Id=db_aa52ba_logins_admin;Password=TestPass_1;"

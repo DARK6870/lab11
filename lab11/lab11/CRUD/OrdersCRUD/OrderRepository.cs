@@ -43,7 +43,7 @@ namespace lab11.CRUD.OrdersCRUD
             {
                 i = index + 1,
                 OrderId = order.OrderId,
-                ProductName = order.Products.Name,
+                ProductName = order.Products.ProductName,
                 UserName = order.Users.UserName,
                 Quantity = order.Quantity,
                 TotalPrice = order.TotalPrice,

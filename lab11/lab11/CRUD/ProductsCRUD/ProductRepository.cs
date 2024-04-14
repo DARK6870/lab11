@@ -49,7 +49,7 @@ namespace lab11.CRUD.ProductsCRUD
             {
                 i = item.i,
                 ProductId = item.Product.ProductId,
-                Name = item.Product.Name,
+                Name = item.Product.ProductName,
                 Price = item.Product.Price,
                 CategoryName = item.Product.Categories.CategoryName,
                 Available = item.Product.Available

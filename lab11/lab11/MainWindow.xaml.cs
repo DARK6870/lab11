@@ -256,7 +256,7 @@ namespace lab11
         {
             try
             {
-                string searchText = search_tb.Text;
+                string searchText = search_tb.Text.ToLower();
                 var modelList = (IEnumerable<dynamic>)data;
                 var foundModels = new List<dynamic>();
                 foreach (dynamic model in modelList)
@@ -264,7 +264,7 @@ namespace lab11
                     foreach (var property in model.GetType().GetProperties())
                     {
                         var value = property.GetValue(model);
-                        if (value != null && value.ToString().Contains(searchText))
+                        if (value != null && value.ToString().ToLower().Contains(searchText))
                         {
                             foundModels.Add(model);
                             break;
@@ -280,6 +280,7 @@ namespace lab11
                 notifier.ShowError("Извините, разрабы дануы накосячили в коде :)");
             }
         }
+
 
     }
 }

@@ -165,3 +165,9 @@ D:\GIT\lab11\lab11\lab11\obj\Debug\net7.0-windows\WindowsCRUD\ProductsCRUD.g.cs
 D:\GIT\lab11\lab11\lab11\obj\Debug\net7.0-windows\WindowsCRUD\ProductsCRUD.baml
 D:\GIT\lab11\lab11\lab11\obj\Debug\net7.0-windows\WindowsCRUD\OrdersCRUD.g.cs
 D:\GIT\lab11\lab11\lab11\obj\Debug\net7.0-windows\WindowsCRUD\OrdersCRUD.baml
+C:\Users\Lab106(35)\Desktop\lab11-main\lab11\lab11\obj\Debug\net7.0-windows\WindowsCRUD\OrdersCRUD.g.cs
+C:\Users\Lab106(35)\Desktop\lab11-main\lab11\lab11\obj\Debug\net7.0-windows\WindowsCRUD\ProductsCRUD.g.cs
+C:\Users\Lab106(35)\Desktop\lab11-main\lab11\lab11\obj\Debug\net7.0-windows\WindowsCRUD\StatusCRUD.g.cs
+C:\Users\Lab106(35)\Desktop\lab11-main\lab11\lab11\obj\Debug\net7.0-windows\WindowsCRUD\OrdersCRUD.baml
+C:\Users\Lab106(35)\Desktop\lab11-main\lab11\lab11\obj\Debug\net7.0-windows\WindowsCRUD\ProductsCRUD.baml
+C:\Users\Lab106(35)\Desktop\lab11-main\lab11\lab11\obj\Debug\net7.0-windows\WindowsCRUD\StatusCRUD.baml

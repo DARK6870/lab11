@@ -1,0 +1,34 @@
+﻿<Window x:Class="lab11.Registration"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:lab11"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="Create a new account" MinHeight="650" MinWidth="850" Height="650" Width="850" Icon="/ghost_solid.png" MaxHeight="700" MaxWidth="850">
+    <Grid>
+        <Image Width="99" HorizontalAlignment="Center" Height="100" Stretch="Fill" Margin="0,20,0,0" VerticalAlignment="Top" Source="/ghost_solid.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+        <TextBox materialDesign:TextFieldAssist.HasClearButton="True" Padding="10,10,5,5" x:Name="username_tb" Width="300" materialDesign:HintAssist.Hint="Enter username" FontSize="15" Style="{StaticResource MaterialDesignOutlinedTextBox}" BorderThickness="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="100,290,0,0" Height="45" 
+            FontWeight="Regular" VerticalContentAlignment="Center" BorderBrush="#FF006FDD" SelectionBrush="#FF006FDD" CaretBrush="#FF0055A4" SelectionOpacity="0.3" FontFamily="Cascadia Code"/>
+        <TextBox materialDesign:TextFieldAssist.HasClearButton="True" Padding="10,10,5,5" x:Name="email_tb" Width="300" materialDesign:HintAssist.Hint="Enter email" FontSize="15" Style="{StaticResource MaterialDesignOutlinedTextBox}" BorderThickness="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="450,290,0,0" Height="45" 
+    FontWeight="Regular" VerticalContentAlignment="Center" BorderBrush="#FF006FDD" SelectionBrush="#FF006FDD" CaretBrush="#FF0055A4" SelectionOpacity="0.3" FontFamily="Cascadia Code"/>
+        <PasswordBox Padding="10,10,5,5" x:Name="password_tb" Width="300" materialDesign:HintAssist.Hint="Enter password" FontSize="15" materialDesign:TextFieldAssist.HasClearButton="True"
+Style="{StaticResource MaterialDesignOutlinedRevealPasswordBox}" BorderThickness="2" VerticalAlignment="Top" HorizontalAlignment="Left" Height="45" 
+            FontWeight="Regular" VerticalContentAlignment="Center" BorderBrush="#FF006FDD" SelectionBrush="#FF006FDD" CaretBrush="#FF0055A4" SelectionOpacity="0.3" FontFamily="Cascadia Code" Margin="100,350,0,0"/>
+        <TextBox materialDesign:TextFieldAssist.HasClearButton="True" Padding="10,10,5,5" x:Name="fullName_tb" Width="300" materialDesign:HintAssist.Hint="Enter fullname" FontSize="15" Style="{StaticResource MaterialDesignOutlinedTextBox}" BorderThickness="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="450,350,0,0" Height="45" 
+FontWeight="Regular" VerticalContentAlignment="Center" BorderBrush="#FF006FDD" SelectionBrush="#FF006FDD" CaretBrush="#FF0055A4" SelectionOpacity="0.3" FontFamily="Cascadia Code"/>
+        <Label Content="Create a new account" HorizontalAlignment="Center" Margin="0,110,0,0" VerticalAlignment="Top" Foreground="#FF3E3E3E" FontSize="25" FontWeight="Bold"/>
+        <Button Height="40" x:Name="reg_btn" Click="reg_btn_Click" Content="Create a new account" HorizontalAlignment="Left" Margin="96,0,0,54" VerticalAlignment="Bottom"/>
+        <Button x:Name="clear_btn" Click="clear_btn_Click" Height="40" Content="Clear all data" HorizontalAlignment="Left" Margin="286,0,0,54" VerticalAlignment="Bottom" Background="#FFB94343" BorderBrush="#FFA43E3E"/>
+        <Button x:Name="openLoginForm" Click="openLoginForm_Click" Content="Already have an account? Login" Height="20" FontSize="12" Background="Transparent" BorderBrush="Transparent" Foreground="Gray" HorizontalAlignment="Center" Padding="0,0,0,0" Margin="0,0,0,10" VerticalAlignment="Bottom"/>
+        <Label x:Name="msg" Content="" HorizontalAlignment="Center" Margin="0,153,0,0" VerticalAlignment="Top" FontWeight="Regular" Foreground="#DDF72525" Width="770" HorizontalContentAlignment="Center" Height="117"/>
+    </Grid>
+</Window>

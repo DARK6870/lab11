@@ -13,24 +13,19 @@
      TextOptions.TextRenderingMode="Auto"
      Background="{DynamicResource MaterialDesignPaper}"
      FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="MainWindow" Height="700" Width="1200">
+        Title="Login into account" MinHeight="550" MinWidth="450" Height="550" Width="450" MaxHeight="700" Icon="/ghost_solid.png" MaxWidth="620">
     <Grid>
-
-        <DataGrid IsReadOnly="True" SelectionMode="Extended" FontSize="16" SelectionChanged="myDataGrid_SelectionChanged" x:Name="myDataGrid" Margin="0,110,0,0"/>
-        <ComboBox x:Name="table_cb" materialDesign:HintAssist.Hint="Select table" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Margin="21,16,0,0" VerticalAlignment="Top" Width="177" SelectionChanged="table_cb_SelectionChanged" FontSize="16">
-            <ComboBoxItem Content="Products"/>
-            <ComboBoxItem Content="Orders"/>
-            <ComboBoxItem Content="Status"/>
-            <ComboBoxItem Content="Category"/>
-            <ComboBoxItem Content="Users"/>
-        </ComboBox>
-        <Button x:Name="edit_btn" Click="edit_btn_Click" HorizontalAlignment="Right" Margin="0,70,30,0" VerticalAlignment="Top" Background="#FFC78F3D" BorderBrush="#FFD4964A">
-            <materialDesign:PackIcon Kind="Edit" />
-        </Button>
-        <Button x:Name="NewRecord_btn" Click="NewRecord_btn_Click" HorizontalAlignment="Right" Margin="0,70,90,0" VerticalAlignment="Top" Background="#FF056DA4" BorderBrush="#FF035990">
-            <materialDesign:PackIcon Kind="Plus" />
-        </Button>
-        <TextBox x:Name="search_tb" TextChanged="search_tb_TextChanged" materialDesign:HintAssist.Hint="Search" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Right" Margin="0,15,30,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="221" FontSize="16"/>
-
+        <Image Width="99" HorizontalAlignment="Center" Height="100" Stretch="Fill" Margin="0,20,0,0" VerticalAlignment="Top" Source="/ghost_solid.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+        <TextBox  materialDesign:TextFieldAssist.HasClearButton="True" Padding="10,10,5,5" x:Name="username_tb" Width="300" materialDesign:HintAssist.Hint="Enter email" FontSize="15" Style="{StaticResource MaterialDesignOutlinedTextBox}" BorderThickness="2" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,220,0,0" Height="45" 
+            FontWeight="Regular" VerticalContentAlignment="Center" BorderBrush="#FF006FDD" SelectionBrush="#FF006FDD" CaretBrush="#FF0055A4" SelectionOpacity="0.3" FontFamily="Cascadia Code"/>
+        <PasswordBox Padding="10,10,5,5" x:Name="password_tb" Width="300" materialDesign:HintAssist.Hint="Enter password" FontSize="15" materialDesign:TextFieldAssist.HasClearButton="True"
+   
+Style="{StaticResource MaterialDesignOutlinedRevealPasswordBox}" BorderThickness="2" VerticalAlignment="Top" HorizontalAlignment="Center" Height="45" 
+            FontWeight="Regular" VerticalContentAlignment="Center" BorderBrush="#FF006FDD" SelectionBrush="#FF006FDD" CaretBrush="#FF0055A4" SelectionOpacity="0.3" FontFamily="Cascadia Code" Margin="0,280,0,0"/>
+        <Label Content="Welcome back!" HorizontalAlignment="Center" Margin="0,120,0,0" VerticalAlignment="Top" Foreground="#FF3E3E3E" FontSize="25" FontWeight="Bold"/>
+        <Button x:Name="Submit" Click="Submit_Click" Height="40" Content="Login into account" HorizontalAlignment="Left" Margin="70,0,0,90" VerticalAlignment="Bottom"/>
+        <Button x:Name="clear_btn" Click="clear_btn_Click" Height="40" Content="Clear all data" HorizontalAlignment="Right" Margin="0,0,70,90" VerticalAlignment="Bottom" Background="#FFB94343" BorderBrush="#FFA43E3E"/>
+        <Button x:Name="openRegForm" Click="openRegForm_Click" Content="Don't have account? Register" Height="20" FontSize="12" Background="Transparent" BorderBrush="Transparent" Foreground="Gray" HorizontalAlignment="Center" Padding="0,0,0,0" Margin="0,0,0,10" VerticalAlignment="Bottom"/>
+        <Label x:Name="message" Content="" HorizontalAlignment="Center" Margin="0,163,0,0" VerticalAlignment="Top" Foreground="#FFEA4D4D" FontWeight="Bold" Height="46" Width="392" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Yu Gothic UI" FontSize="14"/>
     </Grid>
 </Window>

@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\GIT\lab11\lab11\lab11\obj\Debug\net7.0-windows\
+C:\Users\tsymb\OneDrive\Документы\lab11\lab11\lab11\obj\Debug\net7.0-windows\
 lab11
 none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
-D:\GIT\lab11\lab11\lab11\App.xaml
-5-960860784
+C:\Users\tsymb\OneDrive\Документы\lab11\lab11\lab11\App.xaml
+8614160044
 
-34-1681787084
+37-1870803416
 243173744311
-MainWindow.xaml;WindowsCRUD\CategoryCRUD.xaml;WindowsCRUD\OrdersCRUD.xaml;WindowsCRUD\ProductsCRUD.xaml;WindowsCRUD\StatusCRUD.xaml;
+AdminDashboardWindow.xaml;DeliveryWindow.xaml;MainWindow.xaml;Registration.xaml;WindowsCRUD\CategoryCRUD.xaml;WindowsCRUD\OrdersCRUD.xaml;WindowsCRUD\ProductsCRUD.xaml;WindowsCRUD\StatusCRUD.xaml;
 
 True
 

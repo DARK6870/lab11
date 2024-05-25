@@ -39,11 +39,11 @@ namespace lab11.Entityes
         public string? FullName { get; set; }
 
 
-        [Required, MinLength(10), Column(TypeName = "nvarchar(70)"), MaxLength(70)]
+        [MinLength(10), Column(TypeName = "nvarchar(70)"), MaxLength(70)]
         public string? Adress { get; set; }
 
 
-        [Required, MaxLength(20), Column(TypeName = "nvarchar(20)")]
+        [MaxLength(20), Column(TypeName = "nvarchar(20)")]
         public string? PhoneNumber { get; set; }
 
 

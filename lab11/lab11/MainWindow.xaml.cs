@@ -4,283 +4,99 @@ using lab11.CRUD.ProductsCRUD;
 using lab11.CRUD.StatusesCRUD;
 using lab11.CRUD.UsersCRUD;
 using lab11.DataBase;
-using lab11.Entityes;
 using lab11.WindowsCRUD;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Conventions;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.Metrics;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using ToastNotifications;
 using ToastNotifications.Position;
 using ToastNotifications.Lifetime;
 using ToastNotifications.Messages;
+using System.Text;
+using lab11.Entityes;
+using System.Security.Cryptography;
 
 namespace lab11
 {
 
     public partial class MainWindow : Window
     {
-        Notifier notifier = new Notifier(cfg =>
-        {
-            cfg.PositionProvider = new WindowPositionProvider(
-                parentWindow: Application.Current.MainWindow,
-                corner: Corner.TopRight,
-                offsetX: 10,
-                offsetY: 10);
-
-            cfg.LifetimeSupervisor = new TimeAndCountBasedLifetimeSupervisor(
-                notificationLifetime: TimeSpan.FromSeconds(5),
-                maximumNotificationCount: MaximumNotificationCount.FromCount(5));
-
-            cfg.Dispatcher = Application.Current.Dispatcher;
-        });
-
-
-        private readonly ProductRepository _productRepo;
-        private readonly OrderRepository _orderRepo;
-        private readonly CategoryRepository _categoryRepo;
-        private readonly StatusRepository _statusRepo;
-        private readonly UserRepository _userRepo;
-
-        private string TableName = "";
-        private int ID = 0;
-        dynamic data;
-
-
         public MainWindow()
         {
             InitializeComponent();
-            _orderRepo = new OrderRepository(new AppDBContext());
-            _productRepo = new ProductRepository(new AppDBContext());
-            _categoryRepo = new CategoryRepository(new AppDBContext());
-            _statusRepo = new StatusRepository(new AppDBContext());
-            _userRepo = new UserRepository(new AppDBContext());
         }
 
-        public void SetItemsSource<T>(List<T> dataSource)
+        public void FillData(string username, string password)
         {
-            myDataGrid.ItemsSource = dataSource;
-            myDataGrid.Items.Refresh();
-            data = dataSource;
+            username_tb.Text = username;
+            password_tb.Password = password;
         }
 
-        private async void UpdateDataAsync()
+        private void openRegForm_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                if (TableName == "Products")
-                {
-                    SetItemsSource(await _productRepo.GetAllProducts());
-                }
-                else if (TableName == "Orders")
-                {
-                    SetItemsSource(await _orderRepo.GetAllOrders());
-                }
-                else if (TableName == "Category")
-                {
-                    SetItemsSource(await _categoryRepo.GetAllCategories());
-                }
-                else if (TableName == "Status")
-                {
-                    SetItemsSource(await _statusRepo.GetAllStatuses());
-                }
-                else if (TableName == "Users")
-                {
-                    SetItemsSource(await _userRepo.GetAllUsers());
-                }
-            }
-            catch
-            {
-                notifier.ShowError("Oops, something went wrong!");
-            }
+            Registration window = new Registration();
+            window.Show();
+            this.Close();
         }
 
-        private async void table_cb_SelectionChanged(object sender, RoutedEventArgs e)
+        private void clear_btn_Click(object sender, RoutedEventArgs e)
+        {
+            username_tb.Text = string.Empty;
+            password_tb.Password = string.Empty;
+        }
+
+        private async void Submit_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                ID = 0;
-                string table = table_cb.Text;
-
-                ComboBox? comboBox = sender as ComboBox;
-                if (comboBox == null)
+                using (AppDBContext context = new AppDBContext())
                 {
-                    return;
-                }
-                ComboBoxItem? selectedItem = comboBox.SelectedItem as ComboBoxItem;
-                if (selectedItem == null)
-                    return;
+                    string email = username_tb.Text;
+                    string password = password_tb.Password;
 
-                TableName = selectedItem.Content.ToString();
-                UpdateDataAsync();
-            }
-            catch (Exception ex)
-            {
-                notifier.ShowError(ex.Message);
-            }
-        }
+                    User? userData = context.Users.FirstOrDefault(p => p.Email == email);
 
-        private async void edit_btn_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                if (TableName != "" && ID != 0)
-                {
-                    Window? window = null;
-                    if (TableName == "Products")
+                    if (userData != null)
                     {
-                        window = new ProductsCRUD(ID);
-                    }
-                    else if (TableName == "Orders")
-                    {
-                        window = new OrdersCRUD(ID);
-                    }
-                    else if (TableName == "Category")
-                    {
-                        window = new CategoryCRUD((byte)ID);
-                    }
-                    else if (TableName == "Status")
-                    {
-                        window = new StatusCRUD((byte)ID);
-                    }
+                        string storedHash = userData.PasswordHash;
 
-                    window.ShowDialog();
-                    UpdateDataAsync();
-
-                    notifier.ShowSuccess("Data updated!");
-                }
-            }
-            catch (Exception ex)
-            {
-                notifier.ShowError(ex.Message);
-            }
-        }
-
-        private void NewRecord_btn_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                if (TableName != "")
-                {
-                    if (TableName == "Orders" || TableName == "Users")
-                    {
-                        throw new Exception("You cannot add new revord to this table!");
-                    }
-                    Window? window = null;
-                    if (TableName == "Products")
-                    {
-                        window = new ProductsCRUD(0);
-                    }
-                    else if (TableName == "Category")
-                    {
-                        window = new CategoryCRUD(0);
-                    }
-                    else if (TableName == "Status")
-                    {
-                        window = new StatusCRUD(0);
-                    }
-
-                    window.ShowDialog();
-                    UpdateDataAsync();
-                }
-            }
-            catch (Exception ex)
-            {
-                notifier.ShowError(ex.Message);
-            }
-        }
-
-        private void myDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (myDataGrid.SelectedItem != null)
-            {
-                if (TableName != "")
-                {
-                    if (TableName == "Category")
-                    {
-                        CategoryViewModel selectedRow = (CategoryViewModel)myDataGrid.SelectedItem;
-
-                        ID = selectedRow.CategoryId;
-                    }
-                    else if (TableName == "Status")
-                    {
-                        StatusViewModel selectedRow = (StatusViewModel)myDataGrid.SelectedItem;
-
-                        ID = selectedRow.StatusId;
-                    }
-                    else if (TableName == "Products")
-                    {
-                        ProductViewModel selectedRow = (ProductViewModel)myDataGrid.SelectedItem;
-
-                        ID = selectedRow.ProductId;
-                    }
-                    else if (TableName == "Orders")
-                    {
-                        OrderViewModel selectedRow = (OrderViewModel)myDataGrid.SelectedItem;
-
-                        ID = selectedRow.OrderId;
-                    }
-                }
-            }
-        }
-
-        private List<T> GetDataFromDataGrid<T>(DataGrid dataGrid)
-        {
-            if (dataGrid == null || dataGrid.Items.Count == 0)
-            {
-                return new List<T>();
-            }
-            List<T> dataList = dataGrid.Items.Cast<T>().ToList();
-
-            return dataList;
-        }
-
-
-        private void search_tb_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            try
-            {
-                string searchText = search_tb.Text.ToLower();
-                var modelList = (IEnumerable<dynamic>)data;
-                var foundModels = new List<dynamic>();
-                foreach (dynamic model in modelList)
-                {
-                    foreach (var property in model.GetType().GetProperties())
-                    {
-                        var value = property.GetValue(model);
-                        if (value != null && value.ToString().ToLower().Contains(searchText))
+                        using (SHA256 sha256 = SHA256.Create())
                         {
-                            foundModels.Add(model);
-                            break;
+                            byte[] hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                            string enteredHash = BitConverter.ToString(hashedBytes).Replace("-", "").ToLower();
+
+                            if (storedHash == enteredHash)
+                            {
+                                if (userData.RoleId == 1)
+                                {
+                                    AdminDashboardWindow window = new AdminDashboardWindow();
+                                    window.Show();
+                                }
+                                else if (userData.RoleId == 2)
+                                {
+                                    DeliveryWindow window = new DeliveryWindow();
+                                    window.Show();
+                                }
+                                this.Close();
+                            }
+                            else
+                            {
+                                message.Content = "Invalid data, please try again";
+                            }
                         }
                     }
+                    else
+                    {
+                        message.Content = "User not found";
+                    }
                 }
-
-                SetItemsSource(foundModels);
-                data = modelList;
             }
             catch (Exception ex)
             {
-                notifier.ShowError("Извините, разрабы дануы накосячили в коде :)");
+                MessageBox.Show($"An error occurred: {ex.Message}");
             }
         }
-
-
     }
 }

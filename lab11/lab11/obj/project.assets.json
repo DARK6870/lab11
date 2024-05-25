@@ -3297,11 +3297,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\GIT\\lab11\\lab11\\lab11\\lab11.csproj",
+      "projectUniqueName": "C:\\Users\\tsymb\\OneDrive\\Документы\\lab11\\lab11\\lab11\\lab11.csproj",
       "projectName": "lab11",
-      "projectPath": "D:\\GIT\\lab11\\lab11\\lab11\\lab11.csproj",
+      "projectPath": "C:\\Users\\tsymb\\OneDrive\\Документы\\lab11\\lab11\\lab11\\lab11.csproj",
       "packagesPath": "C:\\Users\\tsymb\\.nuget\\packages\\",
-      "outputPath": "D:\\GIT\\lab11\\lab11\\lab11\\obj\\",
+      "outputPath": "C:\\Users\\tsymb\\OneDrive\\Документы\\lab11\\lab11\\lab11\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

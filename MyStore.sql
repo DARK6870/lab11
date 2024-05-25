@@ -1,7 +1,7 @@
-create database MyStore
+create database VladPractica
 go
 
-use MyStore
+use VladPractica
 go
 
 create table Category(
@@ -47,11 +47,6 @@ TotalPrice int not null,
 StatusId tinyint foreign key references Status(StatusId) not null)
 go
 
-create table Cart(
-UserId int foreign key references Users(UserId) not null,
-ProductId int foreign key references Product(ProductId) not null,
-Quantity smallint not null)
-go
 
 
 -- Inserting into Category table
@@ -64,11 +59,11 @@ INSERT INTO Category (CategoryName) VALUES
 
 -- Inserting into Users table
 INSERT INTO Users (RoleId, UserName, Email, PasswordHash, FullName, Adress, PhoneNumber) VALUES
-(1, 'john_doe', 'john@example.com', 'hashed_password_1', 'John Doe', '123 Main St, City, Country', '+1234567890'),
-(2, 'jane_smith', 'jane@example.com', 'hashed_password_2', 'Jane Smith', '456 Elm St, City, Country', '+0987654321'),
-(3, 'mike_jones', 'mike@example.com', 'hashed_password_3', 'Mike Jones', '789 Oak St, City, Country', '+1357924680'),
-(1, 'alice_wonderland', 'alice@example.com', 'hashed_password_4', 'Alice Wonderland', '321 Pine St, City, Country', '+2468135790'),
-(2, 'bob_marley', 'bob@example.com', 'hashed_password_5', 'Bob Marley', '654 Cedar St, City, Country', '+9876543210');
+(1, 'john_doe', 'admin@example.com', '15e2b0d3c33891ebb0f1ef609ec419420c20e320ce94c65fbc8c3312448eb225', 'John Doe', '123 Main St, City, Country', '+1234567890'),
+(2, 'jane_smith', 'delivery@example.com', '15e2b0d3c33891ebb0f1ef609ec419420c20e320ce94c65fbc8c3312448eb225', 'Jane Smith', '456 Elm St, City, Country', '+0987654321'),
+(2, 'mike_jones', 'mike@example.com', '15e2b0d3c33891ebb0f1ef609ec419420c20e320ce94c65fbc8c3312448eb225', 'Mike Jones', '789 Oak St, City, Country', '+1357924680'),
+(2, 'alice_wonderland', 'alice@example.com', '15e2b0d3c33891ebb0f1ef609ec419420c20e320ce94c65fbc8c3312448eb225', 'Alice Wonderland', '321 Pine St, City, Country', '+2468135790'),
+(2, 'bob_marley', 'bob@example.com', '15e2b0d3c33891ebb0f1ef609ec419420c20e320ce94c65fbc8c3312448eb225', 'Bob Marley', '654 Cedar St, City, Country', '+9876543210');
 
 -- Inserting into Status table
 INSERT INTO Status (StatusName) VALUES
@@ -94,13 +89,6 @@ INSERT INTO Orders (UserId, ProductId, Quantity, TotalPrice, StatusId) VALUES
 (4, 4, 1, 80, 1),
 (5, 5, 3, 90, 2);
 
--- Inserting into Cart table
-INSERT INTO Cart (UserId, ProductId, Quantity) VALUES
-(1, 2, 3),
-(2, 3, 1),
-(3, 1, 2),
-(4, 4, 2),
-(5, 5, 1);
 
 
 CREATE PROCEDURE GetCategoryByCategoryNameProcedure

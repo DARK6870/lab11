@@ -58,6 +58,7 @@ public partial class AdminDashboardWindow : Window
     {
         myDataGrid.ItemsSource = dataSource;
         myDataGrid.Items.Refresh();
+        myDataGrid.Columns[1].Visibility = Visibility.Collapsed;
         data = dataSource;
     }
 

@@ -12,6 +12,7 @@ namespace lab11.CRUD.OrdersCRUD
         public int OrderId { get; set; }
         public string ProductName { get; set; }
         public string UserName { get; set; }
+        public string Adres {  get; set; }
         public short Quantity { get; set; }
         public int TotalPrice { get; set; }
         public string StatusName { get; set; }

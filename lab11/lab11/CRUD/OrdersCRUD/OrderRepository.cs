@@ -47,7 +47,8 @@ namespace lab11.CRUD.OrdersCRUD
                 UserName = order.Users.UserName,
                 Quantity = order.Quantity,
                 TotalPrice = order.TotalPrice,
-                StatusName = order.Statuses.StatusName
+                StatusName = order.Statuses.StatusName,
+                Adres = order.Users.Adress,
             }).ToList();
 
             return orderViewModels;
